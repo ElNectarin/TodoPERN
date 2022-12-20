@@ -45,6 +45,22 @@ class TaskController {
             console.log(error.message)
         }
     }
+
+    async updateTask(req, res) {
+        try {
+            const { id } = req.params;
+            const { iscompleted } = req.body;
+          console.log(id)
+            const updateTask = await pool.query(
+                "UPDATE todos SET iscomplete=$2 WHERE id = $1 RETURNING * ",
+                [id,iscompleted]
+            )
+            
+            res.json("update")
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 }
 
 export default new TaskController()

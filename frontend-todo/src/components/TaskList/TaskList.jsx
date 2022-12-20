@@ -20,15 +20,29 @@ function TaskList() {
             console.log(error.message)
         }
     }
+    
+    
+
     useEffect(() => {
+        
         getList()
     }, [])
     return (
-        <div>
-            <ul>
-                {list.map(task => <li key={task.id}>{task.task}
-                <button onClick={() => deleteTask(task.id)}>delete</button></li>)}
-            </ul>
+        <div className="todo-row">
+            
+            {list.map(task => 
+            <div className="li" key={task.id}>
+               
+           
+               <input className='task' type="text" value={task.task} readOnly={true}/>
+                
+                <div className="icon">
+                
+                <button onClick={() => deleteTask(task.id)}>Изменить</button>
+                <button onClick={() => deleteTask(task.id)}>Удалить</button>
+                </div>
+                </div>)}
+            
         </div>
     )
 }

@@ -1,13 +1,11 @@
 import './App.css';
-import TaskInput from './components/TaskInput/TaskInput';
-import TaskList from './components/TaskList/TaskList';
+import TodoList from './components/TodoList';
 
 function App() {
   return (
     <div className="App">
-      <TaskInput />
-      <TaskList />
-    </div>
+    <TodoList />
+  </div>
   );
 }
 

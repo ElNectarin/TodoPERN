@@ -7,25 +7,27 @@ function TaskInput() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const body = { task };
-            await axios.post("http://localhost:3001/todos", body, {
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-            });
-            window.location = "/";
-        } catch (err) {
-            console.error(err);
+        const body = { task };
+        if (body.task === '') {
+        return
+        } else {
+        await axios.post("http://localhost:3001/todos", body, {
+        headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+        },
+        }).finally(window.location.reload());
         }
-    };
-
+        } catch (err) {
+        console.error(err);
+        }
+        };
     return (
         <div>
-            <h1>TaskInput</h1>
+            <h1>Список задач</h1>
             <form onSubmit={handleSubmit} action="">
-                <input type="text" value={task} onChange={e => setTask(e.target.value)} />
-                <button>Add Task</button>
+                <input type="text" maxLength={35} value={task} onChange={e => setTask(e.target.value)} />
+                <button className="add">Добавить задачу</button>
             </form>
         </div >
 
