@@ -34,10 +34,6 @@ function TodoList() {
 }, [])
 
 
-
-
-
-/////////////
   const updateTodo = async (todoId, newValue) => {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
       return;
@@ -47,7 +43,7 @@ function TodoList() {
   };
 
   
-/////////////
+
   const completeTodo = async(id) => {
     let updatedTodos = task.map(todo => {
       if (todo.id === id) {
@@ -65,24 +61,8 @@ function TodoList() {
   } catch (error) {
       console.log(error.message)
   }
-
-   
   
-   
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <>
